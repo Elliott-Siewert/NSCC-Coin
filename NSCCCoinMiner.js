@@ -482,7 +482,7 @@ let isValidTxForPool = (tx, aTransactionPool) => {
             return false;
         }
     }
-    broadCastTransactionPool();
+    // broadCastTransactionPool();
     return true;
 };
 
@@ -528,7 +528,7 @@ let addToTransactionPool = (tx, unspentTxOuts)  => {
     }
     console.log('adding to txPool: %s', JSON.stringify(tx));
     transactionPool.push(tx);
-    //broadCastTransactionPool();
+    broadCastTransactionPool();
 };
 
 let getTxPoolIns = (aTransactionPool) => {
@@ -839,7 +839,7 @@ var initHttpServer = () => {
                 throw Error('invalid address or amount');
             }
             let resp = sendTransaction(address, amount);
-            broadCastTransactionPool();
+            // broadCastTransactionPool();
             res.send(resp);
         } catch (e) {
             console.log(e.message);
