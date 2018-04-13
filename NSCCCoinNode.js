@@ -3,6 +3,7 @@
 /* jshint node: true */
 /* jshint esversion: 6 */
 
+// many thanks to Lauri Hartikka https://lhartikk.github.io/
 
 
 // strict mode
@@ -536,10 +537,13 @@ let addToTransactionPool = (tx, unspentTxOuts)  => {
     if(!isValidTxForPool(tx, transactionPool)){
         throw Error('Trying to add invalid tx to pool');
     }
+    console.log("test1");
     console.log('adding to txPool: %s', JSON.stringify(tx));
+    console.log("test2");
     transactionPool.push(tx);
-    //setUnspentTxOuts(updateUnspentTxOuts([tx], getUnspentTxOuts()));
+    console.log("test3");
     broadCastTransactionPool();
+    console.log("test4");
 };
 
 let getTxPoolIns = (aTransactionPool) => {
