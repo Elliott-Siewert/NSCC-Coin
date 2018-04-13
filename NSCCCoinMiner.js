@@ -3,7 +3,7 @@
 /* jshint node: true */
 /* jshint esversion: 6 */
 
-
+// many thanks to Lauri Hartikka https://lhartikk.github.io/
 
 // strict mode
 "use strict";
