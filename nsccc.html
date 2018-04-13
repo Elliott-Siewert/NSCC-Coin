@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./nsccc.js"></script>
+    <title>NSCCC</title>
+</head>
+<body>
+    <h1>Your Address: </h1><span id="address"></span>
+    <h1>Your Balance: </h1><span id="balance"></span>
+    <br><br><hr><br>
+    <h3>Send Transaction</h3>
+    
+    <label for="txtAddress" >Recipient Address:</label>
+    <input type="text" id="sendAddress" name="txtAddress" >
+    
+    <label for="txtAmount">Send Amount:</label>
+    <input type="number" id="sendAmount" name="txtAmount"><br><br>
+    <input type="submit" onClick="sendTransaction()">
+</body>
+</html>
