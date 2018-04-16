@@ -137,7 +137,7 @@ let findTxOutsForAmount = (amount, myUnspentTxOuts) => {
         currentAmount += myUnspentTxOut.amount;
         if(currentAmount >= amount){
             let leftOverAmount = currentAmount - amount;
-            return {includedUnspentTxOuts, leftOverAmount};
+            return {includedUnspentTxOuts: includedUnspentTxOuts, leftOverAmount: leftOverAmount};
         }
     }
     throw Error('not enough coins to send transaction');
@@ -168,7 +168,9 @@ let createTransaction = (receiverAddress, amount, privateKey, aUnspentTxOuts) =>
     });
     let myUnspentTxOuts = filterTxPoolTxs(myUnspentTxOutsA, getTransactionPool());
     console.log("myUnspentTxOuts" + JSON.stringify(myUnspentTxOuts));
-    let {includedUnspentTxOuts, leftOverAmount} = findTxOutsForAmount(amount, myUnspentTxOuts);
+    let txAmountObj = findTxOutsForAmount(amount, myUnspentTxOuts);
+    let includedUnspentTxOuts = txAmountObj.includedUnspentTxOuts;
+    let leftOverAmount = txAmountObj.includedUnspentTxOuts;
     console.log("includedUnspentTxOuts" + JSON.stringify(includedUnspentTxOuts));
     let unsignedTxIns = includedUnspentTxOuts.map(toUnsignedTxIn);
     let tx = new Transaction();
