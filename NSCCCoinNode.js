@@ -170,7 +170,7 @@ let createTransaction = (receiverAddress, amount, privateKey, aUnspentTxOuts) =>
     console.log("myUnspentTxOuts" + JSON.stringify(myUnspentTxOuts));
     let txAmountObj = findTxOutsForAmount(amount, myUnspentTxOuts);
     let includedUnspentTxOuts = txAmountObj.includedUnspentTxOuts;
-    let leftOverAmount = txAmountObj.includedUnspentTxOuts;
+    let leftOverAmount = txAmountObj.leftOverAmount;
     console.log("includedUnspentTxOuts" + JSON.stringify(includedUnspentTxOuts));
     let unsignedTxIns = includedUnspentTxOuts.map(toUnsignedTxIn);
     let tx = new Transaction();
@@ -335,6 +335,7 @@ let validateTransaction = (transaction, aUnspentTxOuts) => {
 
     if(totalTxInValues !== totalTxOutValues){
         console.log("total txin amount !== total txout amount in tx: " + transaction.id);
+        console.log("in:" + totalTxInValues + " out: " + totalTxOutValues);
         return false;
     }
     return true;
